@@ -1,8 +1,8 @@
+import Game from "../components/Game"
+
 function Start(){
     return(
-        <h1>
-            hello start
-        </h1>
+        <Game/>
     )
 }
 export default Start;
