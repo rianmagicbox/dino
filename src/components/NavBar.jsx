@@ -4,7 +4,7 @@ function NavBar(){
     return(
         <nav>
             <div className="div_title">
-                <h1 className="title"> dino game react</h1>
+                <h1 className="title"> Dino Game React</h1>
             </div>
             <hr/>
             <div className="div_options">
