@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import personagem from "../IMG/personagem.gif";
-import cacto from "../IMG/cacto.png";
-import nuvem from "../IMG/nuvem.png";
-import "../styles/Game.css"
-import GameOver from "../IMG/GameOver.png";
+import personagem from "./IMG/personagem.gif";
+import cacto from "./IMG/cacto.png";
+import nuvem from "./IMG/nuvem.png";
+import "./Game.css"
+import GameOver from "./IMG/GameOver.png";
 
 function Game(){
     let [start, setStart] = useState(false);
