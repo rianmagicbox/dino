@@ -14,6 +14,32 @@ function Game(){
     function handleClick(){
         setStart(start ? false : true);
     }
+    function handleTouch(){
+        const personagem = document.querySelector(".personagem-run");
+        const cacto = document.querySelector(".cacto");
+        pulo(personagem, cacto);
+    }
+    function pulo(personagem, cacto){
+        console.log(start);
+        if (start == true) {
+            console.log("start=true");
+            setJump(jump = true);
+
+            setTimeout(()=>{
+                setJump(jump = false);
+                let coordsPersonagem = personagem.getBoundingClientRect();
+                let coordsCacto = cacto.getBoundingClientRect();
+    
+                if(coordsCacto.right <= coordsPersonagem.left - 5){
+                    setPass(pass = true);
+                    if(pass){
+                        setScore(score += 1);
+                        setPass(pass = false);
+                    }
+                }
+            }, 1000);
+        }      
+    }
 
     useEffect(()=>{
         const personagem = document.querySelector(".personagem-run");
@@ -50,29 +76,16 @@ function Game(){
             }
         }, 100);
         document.addEventListener("keydown", (e)=>{
-            if(e.key === " " && jump === false){
-                setJump(jump = true);
-
-                setTimeout(()=>{
-                    setJump(jump = false);
-                    let coordsPersonagem = personagem.getBoundingClientRect();
-                    let coordsCacto = cacto.getBoundingClientRect();
-
-                    if(coordsCacto.right <= coordsPersonagem.left - 5){
-                        setPass(pass = true);
-                        if(pass){
-                            setScore(score += 1);
-                            setPass(pass = false);
-                        }
-                    }
-                }, 1000);
+            if(e.key === " "){
+                console.log("pulo space");
+                pulo(personagem, cacto);
             }
         });
     }, []);
 
     return(
         <section>
-            <div className="game-board">
+            <div className="game-board" onClick={handleTouch}>
                 <img className={start ? "cacto cacto-animation" : "cacto"} src={cacto} alt="deu ruim" />
                 <img className={jump? "jump personagem-run" : "personagem-run"} src={personagem} alt="deu ruim"/>
                 <img className={start? "nuvem nuvem-animation" : "nuvem"} src={nuvem} alt="deu ruim"/>
